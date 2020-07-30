@@ -37,8 +37,15 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templateWithJQuery = () => {
-  $('#template').html(starWarsPeople.name);
-  console.log(starWarsPeople.name);
+  starWarsPeople.forEach(function (person) {
+    let $clone = $('#template').clone();
+    $('main').append($clone);
+    $clone.find('h2').text(person.name);
+    $clone.find('h3').text(person.height);
+    $clone.find('p').text(person.eye_color);
+    $clone.removeAttr('id');
+  });
+  console.log($('main').html());
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,7 +63,9 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  // Solution code here...
+  for (var i = 0; i <= str.length; i++) {
+    result.push(str.slice(i));
+  }
   return result;
 };
 
@@ -69,7 +78,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  let result = arr.split('');
+  return result;
 };
 
 
@@ -116,9 +126,38 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  recipe.ingredients.forEach(value => {
+    let str1 = value.slice(value.indexOf(' ') + 1);
+    let str2 = str1.slice(str1.indexOf(' ') + 1);
+    result.push(str2);
+  });
   return result;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
