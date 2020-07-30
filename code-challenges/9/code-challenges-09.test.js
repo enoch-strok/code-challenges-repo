@@ -25,8 +25,7 @@ const createServer = () => {
   const express = require('express');
   const app = express();
 
-  // Routes go here
-  // Solution code here...
+  app.get('/events', getCurrentEvents);
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -36,7 +35,8 @@ const createServer = () => {
 };
 
 const currentEvents = {
-  news: [{
+  news: [
+    {
       author: "go",
       category: [
         "world"
@@ -156,19 +156,26 @@ const currentEvents = {
       url: "https://bgr.com/2020/04/13/coronavirus-mask-effectiveness-surgical-how-to/"
     }
   ]
-}
+};
 
 function getCurrentEvents(request, response) {
-  // Solution code here...
+  let result = mapCurrentEvents();
+  response.status(200).json(result);
 }
 
 const mapCurrentEvents = () => {
-  // Solution code here...
-}
+  let results = currentEvents.news.map(value => new Event(value));
+  return results;
+};
 
 function Event(obj) {
-  // Solution code here...
-};
+  this.author = obj.author;
+  this.categories = obj.category;
+  this.summary = obj.description;
+  this.img_url = obj.url;
+  this.date = obj.published;
+  this.title = obj.title;
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -263,6 +270,26 @@ const reversedString = (str) => {
   return array.reduce((accumulator,value)=>
     value + accumulator,'').toString();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
