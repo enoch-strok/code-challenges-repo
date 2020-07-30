@@ -50,10 +50,11 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-    let newArray = [];
-    arr.forEach( value => {
-        newArray.push(Math.pow(2,value));
-    });
+  let result = [];
+  arr.forEach((value) => {
+    result.push(Math.pow(2, value));
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,6 +69,23 @@ const mapTwoToThe = (arr) => {
     })
     return newArray;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
